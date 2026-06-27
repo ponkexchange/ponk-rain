@@ -33,7 +33,12 @@ const nextConfig = {
   reactStrictMode: true,
   transpilePackages: ["@ponkrain/sdk"],
   output: "standalone",
-  outputFileTracingRoot: path.join(__dirname, "../../"),
+  // Next 14 places file-tracing root under `experimental`; pointed at the
+  // ponk-rain repo root so the workspace SDK is traced into the standalone
+  // server bundle for self-contained deployment.
+  experimental: {
+    outputFileTracingRoot: path.join(__dirname, "../../"),
+  },
   images: {
     remotePatterns: [
       {
