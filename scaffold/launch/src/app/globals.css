@@ -1,0 +1,151 @@
+/*
+ * Global stylesheet for the @ponkrain/launch scaffold.
+ *
+ * Layers, in order:
+ *   1. Tailwind base / components / utilities (the v3 pipeline pinned by
+ *      postcss.config.mjs + tailwind.config.ts).
+ *   2. The @solana/wallet-adapter-react-ui modal stylesheet, so the wallet
+ *      connect modal opened by WalletButton renders correctly.
+ *   3. The design tokens (CSS custom properties) the Tailwind color theme in
+ *      tailwind.config.ts references by name: --bg, --panel, --elevated,
+ *      --line, --fg, --muted, --pink, --pink-fg, --positive, --negative. Each
+ *      is an "R G B" triple so Tailwind's `rgb(var(--token) / <alpha-value>)`
+ *      mapping can apply opacity (e.g. bg-pink/10).
+ *
+ * The theme is dark-only (this is a trading UI). `color-scheme: dark` makes
+ * native form controls and scrollbars match.
+ */
+
+@import "@solana/wallet-adapter-react-ui/styles.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Surfaces (R G B triples). A near-black canvas with two raised tiers. */
+    --bg: 7 7 10;
+    --panel: 15 15 20;
+    --elevated: 22 22 29;
+    --line: 38 38 48;
+
+    /* Text. */
+    --fg: 237 237 244;
+    --muted: 148 148 163;
+
+    /* Ponk brand accent (pink) and the readable foreground on top of it. */
+    --pink: 236 72 153;
+    --pink-fg: 255 255 255;
+
+    /* Semantic deltas for PnL / price moves. */
+    --positive: 52 211 153;
+    --negative: 248 113 113;
+
+    /* Typography tokens consumed by tailwind.config.ts fontFamily. The fonts
+       themselves are wired up by next/font in layout.tsx, which sets these
+       same variables on <html>; the fallbacks here keep raw CSS sane before
+       hydration. */
+    --font-sans: ui-sans-serif, system-ui, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, monospace;
+
+    color-scheme: dark;
+  }
+
+  html {
+    /* Stop any single wide element (charts, tables, the wallet modal) from
+       creating a document-level horizontal scrollbar. overflow-x: clip (not
+       hidden) keeps the root from becoming a scroll container, so sticky
+       headers still work; per-component .overflow-x-auto wrappers scroll
+       internally and are unaffected. */
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  body {
+    max-width: 100%;
+    overflow-x: clip;
+    background-color: rgb(var(--bg));
+    color: rgb(var(--fg));
+    font-family: var(--font-sans);
+    /* Barely-there dot grid: structure in empty space without visual noise. */
+    background-image: radial-gradient(
+      rgb(255 255 255 / 0.025) 1px,
+      transparent 1px
+    );
+    background-size: 22px 22px;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Monospace numerics: tabular figures so columns of money line up. */
+  .font-mono {
+    font-variant-numeric: tabular-nums;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Thin, theme-matched scrollbars on the dark canvas. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--line)) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: rgb(var(--line));
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+/*
+ * Wallet-adapter modal: re-skin the vendor modal to the dark theme so the
+ * connect dialog opened by WalletButton matches the app instead of shipping
+ * the adapter's default light/blurple look. Only colors and radii are
+ * overridden; layout/behavior is left to the vendor stylesheet imported above.
+ */
+.wallet-adapter-modal-wrapper {
+  background-color: rgb(var(--panel));
+  border: 1px solid rgb(var(--line));
+  border-radius: 0.875rem;
+  color: rgb(var(--fg));
+  box-shadow: 0 24px 64px rgb(0 0 0 / 0.6);
+}
+
+.wallet-adapter-modal-title {
+  color: rgb(var(--fg));
+}
+
+.wallet-adapter-modal-list .wallet-adapter-button {
+  background-color: rgb(var(--elevated));
+  color: rgb(var(--fg));
+  border-radius: 0.625rem;
+}
+
+.wallet-adapter-modal-list .wallet-adapter-button:not([disabled]):hover {
+  background-color: rgb(var(--line));
+}
+
+.wallet-adapter-modal-button-close {
+  background-color: rgb(var(--elevated));
+}
+
+/* The connect button itself (WalletMultiButton), kept brand-pink so the single
+   connect entry point reads as the primary action in the header. */
+.wallet-adapter-button-trigger {
+  background-color: rgb(var(--pink));
+  color: rgb(var(--pink-fg));
+}
+.wallet-adapter-button-trigger:not([disabled]):hover {
+  background-color: rgb(var(--pink) / 0.85);
+}
