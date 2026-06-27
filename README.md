@@ -1,7 +1,18 @@
-<h1 align="center">Ponk Rain</h1>
+<p align="center">
+  <img src=".github/assets/banner.svg" alt="Ponk Rain" width="100%">
+</p>
 
 <p align="center">
   <strong>The launch kit and SDK for <a href="https://ponk.exchange">Ponk Clouds</a>, PONK's bin-based DLMM AMM on Solana with zero protocol fee at the AMM level.</strong>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/license-Apache--2.0-22d1ee?style=flat-square" alt="License Apache-2.0">
+  <img src="https://img.shields.io/badge/Solana-mainnet-ff7eb6?style=flat-square" alt="Solana mainnet">
+  <img src="https://img.shields.io/badge/protocol%20fee-0%25-4ade9e?style=flat-square" alt="0 percent protocol fee">
+  <img src="https://img.shields.io/badge/non--custodial-yes-ffc9d7?style=flat-square" alt="Non-custodial">
+  <img src="https://img.shields.io/badge/TypeScript-strict-3178c6?style=flat-square" alt="TypeScript strict">
+  <img src="https://img.shields.io/badge/PRs-welcome-ff7eb6?style=flat-square" alt="PRs welcome">
 </p>
 
 <p align="center">
@@ -25,6 +36,37 @@ re-derive the byte layout, the PDA seeds, or the swap math by hand.
 > **UNAUDITED.** The Ponk Clouds program holds user funds and has not passed an
 > external security audit. Run it against a local validator or devnet until that
 > changes. Do not deposit funds you are not prepared to lose.
+
+## How it fits together
+
+```mermaid
+flowchart LR
+  Dev["You / your app"] -->|clone and run| Scaffold["scaffold/launch<br/>Next.js launchpad"]
+  Dev -->|npm install| SDK["@ponkrain/sdk"]
+  Scaffold -->|imports| SDK
+  SDK -->|builds unsigned txs| Program["Ponk Clouds program<br/>DJxQ...bT7M"]
+  Wallet["Your wallet"] -->|signs| Program
+  Program --> Solana[("Solana")]
+  classDef brand fill:#15151c,stroke:#ff7eb6,color:#fff;
+  classDef teal fill:#0e1418,stroke:#22d1ee,color:#fff;
+  class Scaffold,SDK brand;
+  class Program,Solana teal;
+```
+
+The SDK never holds keys and never signs. It derives the accounts, encodes the
+instructions, and hands you an unsigned transaction; your wallet signs it. The
+scaffold is just a polished front end over the same SDK calls.
+
+**Launch flow, end to end:**
+
+```mermaid
+flowchart LR
+  A["Pick base / quote"] --> B["Set bin step,<br/>swap fee, price"]
+  B --> C["createMarket()<br/>builds the tx"]
+  C --> D["Wallet signs"]
+  D --> E["Pool + treasury<br/>live on chain"]
+  E --> F["Trade, LP,<br/>claim fees"]
+```
 
 ## What is Ponk Clouds
 
