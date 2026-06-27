@@ -1,0 +1,23 @@
+# Source and config: only the built dist/ is published (see package.json "files").
+src/
+*.test.ts
+*.spec.ts
+__tests__/
+
+# Build + tool config
+tsconfig.json
+tsup.config.ts
+vitest.config.ts
+.npmignore
+
+# Caches / artifacts
+*.tsbuildinfo
+node_modules/
+coverage/
+.turbo/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.log
