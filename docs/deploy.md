@@ -292,11 +292,10 @@ Provider notes for mainnet:
 - The public `https://api.mainnet-beta.solana.com` is the documented default but
   is rate-limited and **not** suitable for production traffic. It will throttle
   `getProgramAccounts` (pool discovery) hard.
-- Use a dedicated provider (the user's existing Helius project is the natural
-  choice here; see the user's Helius credentials in memory). Any provider that
-  supports `getProgramAccounts` works; the SDK's `discoverPools` returns `[]` on
-  RPC failure rather than fabricating, so a throttled endpoint degrades to an
-  empty list, not wrong data.
+- Use a dedicated RPC provider (Helius, Triton, QuickNode, or your own node).
+  Any provider that supports `getProgramAccounts` works; the SDK's
+  `discoverPools` returns `[]` on RPC failure rather than fabricating, so a
+  throttled endpoint degrades to an empty list, not wrong data.
 - Because `NEXT_PUBLIC_PONK_CLOUDS_RPC` is public (baked into the client
   bundle), an API key embedded in it is visible to anyone. Prefer a provider
   that supports domain-allowlisting / referrer restrictions for the browser-side
@@ -388,8 +387,8 @@ real funds is a deliberate risk, not a default.
   footer disclaimer in the app states the program is unaudited and the AMM-level
   protocol fee is zero; keep it visible.
 - [ ] The platform treasury wallet that receives the default 1% treasury cut is
-  the intended PONK treasury address (the user's treasury wallet in memory), and
-  `init_pool_treasury` is being sent for created pools.
+  set to your intended treasury address, and `init_pool_treasury` is being sent
+  for created pools.
 
 **Infrastructure**
 
