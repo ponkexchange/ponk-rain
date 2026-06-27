@@ -1,0 +1,20 @@
+{
+  "name": "ponk-rain",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Ponk Rain - launch kit and SDK for the Ponk Clouds bin-based DLMM AMM.",
+  "license": "Apache-2.0",
+  "author": "Ponk",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@9.7.0",
+  "scripts": {
+    "build": "pnpm -r --filter \"./packages/*\" run build && pnpm -r --filter \"./scaffold/*\" run build",
+    "dev": "pnpm -r --parallel run dev",
+    "typecheck": "pnpm -r run typecheck",
+    "lint": "pnpm -r run lint",
+    "clean": "pnpm -r run clean"
+  }
+}
