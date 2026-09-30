@@ -10,10 +10,13 @@ minutes. Everything here is real: no mocked data, no "coming soon" controls.
 Where an indexed value is genuinely unknown, the UI renders `--` rather than
 inventing a number.
 
-> **UNAUDITED.** The Ponk Clouds program
-> (`DJxQvbEtBFngkmtpEcB41Y4qv4apUFsqUvZvG7AHbT7M`) has not been audited. Run it
-> against a local validator or devnet until that changes. Do not deposit funds
-> you are not prepared to lose.
+> ponk.exchange was assessed by zauth (Vector) on 29 September 2026: a deep scan
+> across 51 endpoints, 5 subdomains and 58 input vectors, every finding verified
+> by browser-based proof of concept. 12 findings, no critical. The report is
+> published in full at https://ponk.exchange/docs/audits
+>
+> Test against a local validator or devnet before you deploy capital, as you
+> would with any on-chain program.
 
 ## What it does
 
