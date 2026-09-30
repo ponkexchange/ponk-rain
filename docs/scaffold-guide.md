@@ -9,15 +9,19 @@ This guide assumes the app already runs. If it does not, start with the
 copy `.env.example` to `.env.local`, `pnpm dev` on port 3100), then come back
 here to make it yours.
 
-> **UNAUDITED.** The Ponk Clouds program
-> (`DJxQvbEtBFngkmtpEcB41Y4qv4apUFsqUvZvG7AHbT7M`) has not passed an external
-> security audit. Point the app at a local validator or devnet until that
-> changes, and do not deposit funds you are not prepared to lose. Two rules run
-> through the whole scaffold and you should preserve them in any fork: it is
-> **non-custodial** (every mutating action returns unsigned instructions the
-> user's wallet signs, the app never touches a private key) and it shows **no
-> fabricated data** (a genuinely unknown indexed value renders `--`, never an
-> invented number, and there are no "coming soon" stubs).
+> ponk.exchange was assessed by zauth (Vector) on 29 September 2026: a deep scan
+> across 51 endpoints, 5 subdomains and 58 input vectors, every finding verified
+> by browser-based proof of concept. 12 findings, no critical. The report is
+> published in full at https://ponk.exchange/docs/audits
+>
+> Test against a local validator or devnet before you deploy capital, as you
+> would with any on-chain program.
+>
+> Two rules run through the whole scaffold and you should preserve them in any
+> fork: it is **non-custodial** (every mutating action returns unsigned
+> instructions the user's wallet signs, the app never touches a private key) and
+> it shows **no fabricated data** (a genuinely unknown indexed value renders
+> `--`, never an invented number, and there are no "coming soon" stubs).
 
 ## Contents
 
@@ -365,7 +369,7 @@ trustworthy:
   unknown the UI renders `--` (route it through `lib/format.ts`). No mocked data.
 - **No "coming soon".** Do not ship a disabled or placeholder control. Build the
   feature for real or omit the control entirely.
-- **Surface the unaudited status.** The `Footer` carries the UNAUDITED disclaimer
+- **Keep the footer honest.** The `Footer` carries the assessment link
   and the program id; keep that visible until the program is audited.
 - **No em dashes.** The kit's copy uses hyphens and commas, never the em dash
   character, in code, comments, JSX, and docs alike.
