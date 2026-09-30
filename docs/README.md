@@ -32,6 +32,10 @@ without re-deriving the on-chain layout by hand. It ships two pieces:
   (`scaffold/launch`), built entirely on `@ponkrain/sdk`. Reads the
   per-app documentation in [`../scaffold/launch/README.md`](../scaffold/launch/README.md).
 
-> **UNAUDITED.** The Ponk Clouds program has not passed an external security
-> audit. Point it at a local validator or devnet until that changes, and do not
-> deposit funds you are not prepared to lose.
+> ponk.exchange was assessed by zauth (Vector) on 29 September 2026: a deep scan
+> across 51 endpoints, 5 subdomains and 58 input vectors, every finding verified
+> by browser-based proof of concept. 12 findings, no critical. The report is
+> published in full at https://ponk.exchange/docs/audits
+>
+> Test against a local validator or devnet before you deploy capital, as you
+> would with any on-chain program.
