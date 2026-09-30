@@ -2,8 +2,9 @@
  * Persistent site footer for `@ponkrain/launch`.
  *
  * Mounted once by the root layout, pinned below the page content. It carries
- * the honesty disclaimer the whole product is held to (the Ponk Clouds program
- * is UNAUDITED and there is ZERO protocol fee at the AMM level) and a verifiable
+ * the honesty disclaimer the whole product is held to (there is ZERO protocol
+ * fee at the AMM level), a link to the platform security assessment, and a
+ * verifiable
  * link to the on-chain program id on Solscan, so a visitor can confirm the
  * venue's program for themselves.
  *
@@ -28,8 +29,7 @@ export function Footer() {
           fee flows to LPs and the pool creator, not to the AMM.
         </p>
         <p className="m-0 font-medium text-fg">
-          UNAUDITED software. Use at your own risk. Nothing here is financial
-          advice.
+          Use at your own risk. Nothing here is financial advice.
         </p>
         <p className="m-0 flex flex-wrap items-center gap-x-2 gap-y-1">
           <span>Program</span>
