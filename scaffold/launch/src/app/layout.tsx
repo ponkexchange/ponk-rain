@@ -16,7 +16,7 @@ import { Footer } from "@/components/layout/Footer";
  *     ConnectionProvider/WalletProvider/WalletModalProvider plus a TanStack
  *     QueryClientProvider),
  *   - the persistent {@link Header} (nav + connect button) and {@link Footer}
- *     (honesty/unaudited disclaimer + program id).
+ *     (honesty disclaimer + assessment link + program id).
  *
  * This file is a server component; all browser-only context lives behind the
  * "use client" boundary in providers.tsx so the layout itself stays static and
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     template: "%s · Ponk Rain",
   },
   description:
-    "Launch, trade, and provide liquidity on Ponk Clouds, a non-custodial bin-based DLMM AMM on Solana with zero protocol fee at the AMM level. UNAUDITED.",
+    "Launch, trade, and provide liquidity on Ponk Clouds, a non-custodial bin-based DLMM AMM on Solana with zero protocol fee at the AMM level.",
   applicationName: "Ponk Rain",
   openGraph: {
     type: "website",
