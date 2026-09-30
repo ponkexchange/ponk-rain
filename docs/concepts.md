@@ -10,10 +10,14 @@ Everything here is a faithful description of the real program in
 is no marketing rounding: the numbers, caps, and rounding directions below are
 the exact ones the program enforces.
 
-> Status: the Ponk Clouds program is UNAUDITED and pre-mainnet. It holds user
-> funds and must not custody real value until it has passed an external security
-> audit. Treat every figure here as a description of behavior, not a promise of
-> safety.
+> Status: the Ponk Clouds program is UNAUDITED. It is deployed on Solana mainnet
+> and it holds user funds, and it has not passed an external security audit.
+> Treat every figure here as a description of behavior, not a promise of safety.
+>
+> The ponk.exchange web application, API and MCP server were assessed separately
+> by zauth (Vector) on 29 September 2026, published in full at
+> [ponk.exchange/docs/audits](https://ponk.exchange/docs/audits). That assessment
+> did not read this program.
 
 ---
 
