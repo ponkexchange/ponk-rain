@@ -6,9 +6,13 @@ TypeScript wrapper over the deployed **Ponk Clouds** program
 (`DJxQvbEtBFngkmtpEcB41Y4qv4apUFsqUvZvG7AHbT7M`), a bin-based DLMM AMM with
 **zero protocol fee at the AMM level**.
 
-> **UNAUDITED.** The Ponk Clouds program has not passed an external security
-> audit. Point the SDK at a local validator or devnet until that changes. Do
-> not deposit funds you are not prepared to lose.
+> ponk.exchange was assessed by zauth (Vector) on 29 September 2026: a deep scan
+> across 51 endpoints, 5 subdomains and 58 input vectors, every finding verified
+> by browser-based proof of concept. 12 findings, no critical. The report is
+> published in full at https://ponk.exchange/docs/audits
+>
+> Test against a local validator or devnet before you deploy capital, as you
+> would with any on-chain program.
 
 Everything is built on raw [`@solana/web3.js`](https://solana-labs.github.io/solana-web3.js/)
 (`^1.95.3`) with no Anchor runtime dependency, so transaction building works in
@@ -981,5 +985,5 @@ for (const ixs of groups) {
   fee; any protocol cut a pool charges accrues to the pool creator (the
   authority), and a flat 1% treasury cut funds the platform, both configurable
   per pool and bounded by the on-chain caps.
-- **UNAUDITED.** Use a local validator or devnet until the program is audited.
+- **Test on devnet first.** Point the SDK at a local validator or devnet while you build.
 ```
