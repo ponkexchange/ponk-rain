@@ -36,6 +36,12 @@ re-derive the byte layout, the PDA seeds, or the swap math by hand.
 > **UNAUDITED.** The Ponk Clouds program holds user funds and has not passed an
 > external security audit. Run it against a local validator or devnet until that
 > changes. Do not deposit funds you are not prepared to lose.
+>
+> The ponk.exchange web application, API and MCP server were assessed separately
+> by zauth (Vector) on 29 September 2026, published in full at
+> [ponk.exchange/docs/audits](https://ponk.exchange/docs/audits). That assessment
+> did not read this program and says nothing about its bin math, its swap
+> accounting or its vault invariants.
 
 ## How it fits together
 
