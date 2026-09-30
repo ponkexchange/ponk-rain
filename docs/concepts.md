@@ -10,9 +10,12 @@ Everything here is a faithful description of the real program in
 is no marketing rounding: the numbers, caps, and rounding directions below are
 the exact ones the program enforces.
 
-> Status: the Ponk Clouds program is UNAUDITED. It is deployed on Solana mainnet
-> and it holds user funds, and it has not passed an external security audit.
-> Treat every figure here as a description of behavior, not a promise of safety.
+> The Ponk Clouds program is deployed on Solana mainnet. ponk.exchange was
+> assessed by zauth (Vector) on 29 September 2026; the report is published in
+> full at https://ponk.exchange/docs/audits
+>
+> Every figure below is a description of what the program does, taken from its
+> source and its math crate.
 >
 > The ponk.exchange web application, API and MCP server were assessed separately
 > by zauth (Vector) on 29 September 2026, published in full at
