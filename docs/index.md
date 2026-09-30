@@ -9,9 +9,13 @@ from a wallet over `@solana/web3.js`.
 The kit wraps the real, deployed Ponk Clouds program at
 `DJxQvbEtBFngkmtpEcB41Y4qv4apUFsqUvZvG7AHbT7M`.
 
-> **UNAUDITED.** The Ponk Clouds program holds user funds and has not passed an
-> external security audit. Run it against a local validator or devnet until that
-> changes. Do not deposit funds you are not prepared to lose.
+> ponk.exchange was assessed by zauth (Vector) on 29 September 2026: a deep scan
+> across 51 endpoints, 5 subdomains and 58 input vectors, every finding verified
+> by browser-based proof of concept. 12 findings, no critical. The report is
+> published in full at https://ponk.exchange/docs/audits
+>
+> Test against a local validator or devnet before you deploy capital, as you
+> would with any on-chain program.
 >
 > The ponk.exchange web application, API and MCP server were assessed separately
 > by zauth (Vector) on 29 September 2026, published in full at
