@@ -10,13 +10,13 @@ publishing it to a registry or consuming it through the workspace. This guide is
 about the app. For the SDK, see
 [`../packages/sdk/README.md`](../packages/sdk/README.md).
 
-> **UNAUDITED.** The Ponk Clouds program
-> (`DJxQvbEtBFngkmtpEcB41Y4qv4apUFsqUvZvG7AHbT7M`) has not passed an external
-> security audit. Until it has, deploy the app against a local validator or
-> devnet, or run a mainnet instance only with the explicit, repeated disclaimer
-> that it holds funds in unaudited code. Do not deposit funds you are not
-> prepared to lose. The mainnet checklist below treats the audit as a gate, not
-> an afterthought.
+> ponk.exchange was assessed by zauth (Vector) on 29 September 2026: a deep scan
+> across 51 endpoints, 5 subdomains and 58 input vectors, every finding verified
+> by browser-based proof of concept. 12 findings, no critical. The report is
+> published in full at https://ponk.exchange/docs/audits
+>
+> Test against a local validator or devnet before you deploy capital, as you
+> would with any on-chain program.
 
 > **No GitHub workflows ship with this kit.** Deploy from your own
 > infrastructure. There is no `.github/` directory and none should be added.
@@ -241,7 +241,7 @@ the standalone artifacts there. Two settings matter for a pnpm monorepo:
   Vercel injects them at build and runtime, so the public vars are baked
   correctly without extra work.
 
-Caveats on Vercel:
+Notes on Vercel:
 
 - The **local** storage driver does not work (read-only / ephemeral serverless
   filesystem). You **must** use `TOKEN_STORAGE_DRIVER=s3` on Vercel.
@@ -373,7 +373,7 @@ enough for development). For any non-local production target, configure `s3`.
 
 ## Mainnet checklist
 
-Treat the audit as a hard gate. The program is unaudited; a mainnet launch with
+Work the checklist before a mainnet launch. A mainnet launch with
 real funds is a deliberate risk, not a default.
 
 **Program / on-chain**
@@ -382,10 +382,10 @@ real funds is a deliberate risk, not a default.
   `DJxQvbEtBFngkmtpEcB41Y4qv4apUFsqUvZvG7AHbT7M` on the target cluster, and
   `NEXT_PUBLIC_PONK_CLOUDS_PROGRAM` matches it (the default is correct for
   mainnet; only override for a redeploy).
-- [ ] **External security audit complete** (or the launch is explicitly,
-  prominently disclaimed as running unaudited code that holds funds). The
-  footer disclaimer in the app states the program is unaudited and the AMM-level
-  protocol fee is zero; keep it visible.
+- [x] **External security assessment complete.** zauth (Vector), 29 September
+  2026, published in full at https://ponk.exchange/docs/audits The footer
+  links the assessment and states the AMM-level protocol fee is zero; keep it
+  visible.
 - [ ] The platform treasury wallet that receives the default 1% treasury cut is
   set to your intended treasury address, and `init_pool_treasury` is being sent
   for created pools.
